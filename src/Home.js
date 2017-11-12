@@ -40,16 +40,21 @@ class Home extends Component {
 
   render() {
     console.log(this.state.posts);
-    const imgSrc = 'https://picsum.photos/300/200';
+    let imgSrc = 'https://picsum.photos/300/200';
     return (
       <div className="cards">
         <Helmet title="Contentful Static React" />
         {this.state.posts &&
-          this.state.posts.map(post => (
-            <Link key={post.sys.id} to={`post/${post.sys.id}/`}>
-              <Card src={imgSrc} title={post.fields.title} />
-            </Link>
-          ))}
+          this.state.posts.map(post => {
+            if (post.fields.featuredImage) {
+              imgSrc = post.fields.featuredImage.fields.file.url;
+            }
+            return (
+              <Link key={post.sys.id} to={`post/${post.sys.id}/`}>
+                <Card src={imgSrc} title={post.fields.title} />
+              </Link>
+            );
+          })}
       </div>
     );
   }
