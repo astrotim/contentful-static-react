@@ -8,6 +8,18 @@ A starter kit for building a static website with React as the templating library
 - [react-helmet](https://github.com/nfl/react-helmet) for page-specific meta data
 - [marksy](https://github.com/cerebral/marksy) for converting Markdown into a React virtual DOM for rendering
 
+### Setup
+
+- Login to [contentful.com](contentful.com)
+- Click '+ Add space', enter a space name, select 'Create an example space' and choose 'Blog'
+- Go to the APIs screen and get your 'Space ID' and 'Content Delivery API - access token'
+- Create a new file name `.env.local` and add your API keys in the format shown below:
+
+```
+REACT_APP_SPACE_ID=your_space_id
+REACT_APP_ACCESS_TOKEN=your_access_token
+```
+
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
