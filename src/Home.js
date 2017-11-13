@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { createClient } from 'contentful';
-import Card from './Card';
-
-import './Home.css';
+import PostLink from './PostLink';
 
 class Home extends Component {
   state = {
@@ -39,8 +36,7 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.state.posts);
-    let imgSrc = 'https://picsum.photos/300/200';
+    let imgSrc = null;
     return (
       <div className="cards">
         <Helmet title="Contentful Static React" />
@@ -50,9 +46,12 @@ class Home extends Component {
               imgSrc = post.fields.featuredImage.fields.file.url;
             }
             return (
-              <Link key={post.sys.id} to={`post/${post.sys.id}/`}>
-                <Card src={imgSrc} title={post.fields.title} />
-              </Link>
+              <PostLink
+                key={post.sys.id}
+                to={post.sys.id}
+                src={imgSrc}
+                title={post.fields.title}
+              />
             );
           })}
       </div>
