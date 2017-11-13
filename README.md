@@ -10,6 +10,9 @@ A starter kit for building a static website with React as the templating library
 
 ### Setup
 
+> Note: this project requires Node v8.6.0 or higher
+
+- `yarn install` project dependencies
 - Login to [contentful.com](contentful.com)
 - Click '+ Add space', enter a space name, select 'Create an example space' and choose 'Blog'
 - Go to the APIs screen and get your 'Space ID' and 'Content Delivery API - access token'
@@ -19,6 +22,8 @@ A starter kit for building a static website with React as the templating library
 REACT_APP_SPACE_ID=your_space_id
 REACT_APP_ACCESS_TOKEN=your_access_token
 ```
+
+- `yarn build` to create a static build.
 
 ---
 
