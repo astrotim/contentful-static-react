@@ -30,10 +30,17 @@ class Post extends Component {
     });
 
     client
-      .getEntry(this.props.match.params.id)
+      // use getEntries because it does link resolution
+      .getEntries({
+        'sys.id[in]': this.props.match.params.id
+      })
       .then(response => {
+        // extract the data from the response array
+        return response.items[0].fields;
+      })
+      .then(fields => {
         this.setState({
-          data: response.fields
+          data: fields
         });
       })
       .catch(console.error);
@@ -45,7 +52,7 @@ class Post extends Component {
 
     if (this.state.data) {
       title = this.state.data.title;
-      content = getMarkup(this.state.data.body);
+      content = getMarkup(this.state.data.content);
     }
 
     return (
