@@ -17,7 +17,7 @@ class Home extends Component {
     client
       .getContentTypes()
       .then(response => {
-        const postType = response.items.find(item => item.name === 'Post');
+        const postType = response.items.find(item => item.name === 'Blog Post');
         return postType.sys.id;
       })
       .then(id => {
